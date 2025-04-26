@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button } from "flowbite-react";
 import "./signup.css"; // Import your CSS file for styling
 
 function SignupPage() {
@@ -32,6 +32,7 @@ function SignupPage() {
       });
 
       console.log("Sign-up successful!");
+      navigate("/login"); // Redirect to the homepage after successful sign-up
     } catch (error) {
       console.error("Error signing up:", error.message);
     }
@@ -39,43 +40,49 @@ function SignupPage() {
 
   return (
     <div className="signup-page">
-      <h1>Signup Page</h1>
-      <form onSubmit={signUp}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
+      <div className="form-container">
+        {" "}
+        <form onSubmit={signUp} className="signup-form">
+          <h1>Signup Page</h1>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <Button>Sign up</Button>
+        </form>
+      </div>
+      <Button onClick={navigateTologin} color="purple">
+        Already have an account? go to login
+      </Button>
     </div>
   );
 }
