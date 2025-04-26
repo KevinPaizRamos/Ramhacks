@@ -11,7 +11,7 @@ function SignupPage() {
   
   const navigate = useNavigate();
   
-  const navigateTologin = () => {
+  const navigateToLogin = () => {
     navigate("/login"); // Redirect to the login page
   };
 
@@ -27,6 +27,7 @@ function SignupPage() {
       });
 
       console.log("Sign-up successful!");
+      navigateToLogin();
     } catch (error) {
       console.error("Error signing up:", error.message);
     }
@@ -72,7 +73,7 @@ function SignupPage() {
         <button type="submit">Sign-up</button>
       </form>
       <Button
-        onClick={navigateTologin}
+        onClick={navigateToLogin}
         color="success"
         className="signup-button"
       >
