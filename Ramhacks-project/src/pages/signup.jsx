@@ -1,6 +1,13 @@
 import React from "react";
+import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
+  const navigate = useNavigate();
+
+  const navigateTologin = () => {
+    navigate("/login"); // Redirect to the login page
+  };
   return (
     <div className="signup-page">
       <h1>Signup Page</h1>
@@ -19,6 +26,13 @@ function SignupPage() {
         </div>
         <button type="submit">Signup</button>
       </form>
+      <Button
+        onClick={navigateTologin}
+        color="success"
+        className="signup-button"
+      >
+        Already have an account? Log In
+      </Button>
     </div>
   );
 }

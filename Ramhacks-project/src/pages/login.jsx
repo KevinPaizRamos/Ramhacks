@@ -1,7 +1,22 @@
 import React from "react";
 import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    // Handle login logic here
+    console.log("Login button clicked");
+    // Redirect to another page after login
+    navigate("/"); // Redirect to the landing page or any other page
+  };
+
+  const navigateToSignup = () => {
+    navigate("/signup"); // Redirect to the signup page
+  };
+
   return (
     <div className="login-page">
       <h1>Login Page</h1>
@@ -14,8 +29,15 @@ function LoginPage() {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <Button color="alternative">Alternative</Button>
+        <Button color="alternative">LogIn</Button>
       </form>
+      <Button
+        onClick={navigateToSignup}
+        color="success"
+        className="login-button"
+      >
+        Create an account
+      </Button>
     </div>
   );
 }
