@@ -41,7 +41,6 @@ function SignupPage() {
   return (
     <div className="signup-page">
       <div className="form-container">
-        {" "}
         <form onSubmit={signUp} className="signup-form">
           <h1>Signup Page</h1>
           <div className="form-group">
@@ -80,7 +79,7 @@ function SignupPage() {
           <Button>Sign up</Button>
         </form>
       </div>
-      <Button onClick={navigateTologin} color="purple">
+      <Button onClick={navigateTologin} className="login-button">
         Already have an account? go to login
       </Button>
     </div>

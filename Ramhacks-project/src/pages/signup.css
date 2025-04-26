@@ -1,7 +1,18 @@
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+}
+
 .signup-form-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding: 10px;
 }
 .form-container {
   background-color: #ffffff;
@@ -32,7 +43,8 @@
   outline: none;
 }
 
-.signup-form button {
+.signup-form button,
+.login-button {
   padding: 10px;
   border: none;
   border-radius: 5px;
