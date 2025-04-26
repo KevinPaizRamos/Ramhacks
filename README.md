@@ -1,2 +1,3 @@
 # Ramhacks
-Ramhacks AI path environmental path 
+Ramhacks AI best use of AI
+
