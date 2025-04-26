@@ -51,7 +51,7 @@ function LoginPage() {
             required 
           />
         </div>
-        <Button color="alternative">LogIn</Button>
+        <Button type="submit" color="alternative">Log In</Button>
       </form>
       <Button
         onClick={navigateToSignup}
