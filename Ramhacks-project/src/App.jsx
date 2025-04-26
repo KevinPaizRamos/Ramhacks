@@ -4,7 +4,7 @@ import "./App.css";
 import LandingPage from "./pages/landing";
 import LoginPage from "./pages/login";
 import SignupPage from "./pages/signup";
-
+import GIS from "./pages/GIS";
 function App() {
   const routes = useRoutes([
     {
@@ -19,6 +19,10 @@ function App() {
       path: "/signup",
       element: <SignupPage />,
     },
+    {
+      path: "/GIS",
+      element: <GIS />,
+    }
   ]);
 
   return (
