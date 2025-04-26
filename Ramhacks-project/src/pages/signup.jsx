@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { Button } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  const navigate = useNavigate();
+  
+  const navigateTologin = () => {
+    navigate("/login"); // Redirect to the login page
+  };
 
   const signUp = async (e) => {
     e.preventDefault();
@@ -63,6 +71,13 @@ function SignupPage() {
         </div>
         <button type="submit">Sign-up</button>
       </form>
+      <Button
+        onClick={navigateTologin}
+        color="success"
+        className="signup-button"
+      >
+        Already have an account? Log In
+      </Button>
     </div>
   );
 }
