@@ -41,7 +41,11 @@ function SignupPage() {
   return (
     <div className="signup-page">
       <div className="form-container">
-        <form onSubmit={signUp} className="signup-form">
+        <form
+          onSubmit={signUp}
+          className="signup-form"
+          aria-label="Signup Form"
+        >
           <h1>Signup Page</h1>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
@@ -51,7 +55,9 @@ function SignupPage() {
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
               required
+              aria-required="true"
             />
           </div>
           <div className="form-group">
@@ -62,7 +68,9 @@ function SignupPage() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
               required
+              aria-required="true"
             />
           </div>
           <div className="form-group">
@@ -73,14 +81,22 @@ function SignupPage() {
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
               required
+              aria-required="true"
             />
           </div>
-          <Button>Sign up</Button>
+          <Button type="submit" className="signup-button">
+            Sign up
+          </Button>
         </form>
       </div>
-      <Button onClick={navigateTologin} className="login-button">
-        Already have an account? go to login
+      <Button
+        onClick={navigateTologin}
+        color="purple"
+        className="login-redirect-button"
+      >
+        Already have an account? Go to login
       </Button>
     </div>
   );
