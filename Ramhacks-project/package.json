@@ -11,8 +11,6 @@
     "postinstall": "flowbite-react patch"
   },
   "dependencies": {
-    "@esbuild/darwin-arm64": "^0.25.3",
-    "@rollup/rollup-darwin-arm64": "^4.40.0",
     "@tailwindcss/vite": "^4.1.4",
     "firebase": "^11.6.1",
     "flowbite-react": "^0.11.7",
