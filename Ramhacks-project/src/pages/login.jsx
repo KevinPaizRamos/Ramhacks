@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "flowbite-react";
 
 function LoginPage() {
   return (
@@ -13,7 +14,7 @@ function LoginPage() {
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <button type="submit">Login</button>
+        <Button color="alternative">Alternative</Button>
       </form>
     </div>
   );
