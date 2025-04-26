@@ -5,7 +5,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: import.meta.env.REACT_FIREBASE_API_KEY,
+  apiKey: import.meta.env.VITE_REACT_FIREBASE_API_KEY,
   authDomain: "ramhacks-d7372.firebaseapp.com",
   projectId: "ramhacks-d7372",
   storageBucket: "ramhacks-d7372.firebasestorage.app",
