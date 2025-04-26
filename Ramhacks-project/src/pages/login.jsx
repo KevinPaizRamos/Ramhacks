@@ -17,7 +17,7 @@ function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("Signed in successfully!");
-      navigate("/"); // Redirect to the landing page or any other page
+      navigate("/dashboard"); // Redirect to the landing page or any other page
     } catch (error) {
       console.error("Error signing in:", error.message);
     }
