@@ -6,6 +6,7 @@ import LoginPage from "./pages/login";
 import SignupPage from "./pages/signup";
 import Homepage from "./pages/homepage"; // Import your homepage component
 import GIS from "./pages/GIS";
+import DashboardPage from "./pages/dashboard";
 function App() {
   const routes = useRoutes([
     {
@@ -28,6 +29,10 @@ function App() {
       path: "/GIS",
       element: <GIS />,
     },
+    {
+      path: "/dashboard",
+      element: <DashboardPage />,
+    }
   ]);
 
   return (
