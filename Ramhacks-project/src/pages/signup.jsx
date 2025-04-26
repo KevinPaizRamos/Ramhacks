@@ -1,6 +1,7 @@
 import React from "react";
-import { Button } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import "./signup.css"; // Import your CSS file for styling
 
 function SignupPage() {
   const navigate = useNavigate();
@@ -10,29 +11,27 @@ function SignupPage() {
   };
   return (
     <div className="signup-page">
-      <h1>Signup Page</h1>
-      <form>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" required />
+      <form className="form-container">
+        <div>
+          <div className="">
+            <Label htmlFor="email1">Your email</Label>
+          </div>
+          <TextInput
+            id="email1"
+            type="email"
+            placeholder="name@flowbite.com"
+            required
+          />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password1">Your password</Label>
+          </div>
+          <TextInput id="password1" type="password" required />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" required />
-        </div>
-        <button type="submit">Signup</button>
+
+        <Button type="submit">Create Account</Button>
       </form>
-      <Button
-        onClick={navigateTologin}
-        color="success"
-        className="signup-button"
-      >
-        Already have an account? Log In
-      </Button>
     </div>
   );
 }
