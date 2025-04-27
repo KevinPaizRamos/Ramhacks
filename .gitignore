@@ -4,6 +4,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
 # Python
 __pycache__/
 *.py[cod]
@@ -18,6 +19,7 @@ __pycache__/
 dist/
 build/
 *.log
+
 
 # IDE/Editor specific
 .vscode/
@@ -56,3 +58,4 @@ coverage/
 
 # Miscellaneous
 *.lock
+firebase_key.json
