@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from emotion import predict_moods  # <-- import from emotion.py
+from collections import Counter
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -32,6 +33,28 @@ def analyze():
 @app.route("/history", methods=["GET"])
 def get_history():
     return jsonify(history)
+
+@app.route("/stats", methods=["GET"])
+def get_stats():
+    all_moods = []
+    
+    for entry in history:
+        all_moods.extend(entry['labels'])  # Collect all detected labels
+
+    total_requests = len(history)
+    mood_counter = Counter(all_moods)
+
+    if mood_counter:
+        most_common_mood = mood_counter.most_common(1)[0][0]
+    else:
+        most_common_mood = None
+
+    return jsonify({
+        "total_requests": total_requests,
+        "mood_counts": dict(mood_counter),
+        "most_common_mood": most_common_mood
+    })
+
 
 if __name__ == "__main__":
     app.run(debug=True)
