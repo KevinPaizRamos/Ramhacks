@@ -40,16 +40,19 @@ def home():
     return "LifeLine AI Backend Running!"
 
 @app.route("/analyze", methods=["POST"])
+  # <-- Protect this route with Firebase authentication
 def analyze():
     data = request.get_json()
     text = data.get("text", "")
     
     labels, tips = predict_moods(text)
 
-    # Save to history
-    history.append({
-        "text": text,
-        "labels": labels
+    user_id = request.user['uid']  # Firebase UID
+
+    # Save the analysis to Firestore under user's collection
+    db.collection('users').document(user_id).collection('mood_history').add({
+        'text': text,
+        'labels': labels
     })
 
     return jsonify({
@@ -58,19 +61,37 @@ def analyze():
     })
 
 @app.route("/history", methods=["GET"])
-
+@firebase_required  # <-- Protect this route with Firebase authentication
 def get_history():
+    user_id = request.user['uid']
+
+    mood_history_ref = db.collection('users').document(user_id).collection('mood_history')
+    docs = mood_history_ref.stream()
+
+    history = []
+    for doc in docs:
+        history.append(doc.to_dict())
+
     return jsonify(history)
 
+
+
 @app.route("/stats", methods=["GET"])
-
+@firebase_required
 def get_stats():
-    all_moods = []
-    
-    for entry in history:
-        all_moods.extend(entry['labels'])  # Collect all detected labels
+    user_id = request.user['uid']
 
-    total_requests = len(history)
+    mood_history_ref = db.collection('users').document(user_id).collection('mood_history')
+    docs = mood_history_ref.stream()
+
+    all_moods = []
+    total_requests = 0
+
+    for doc in docs:
+        doc_data = doc.to_dict()
+        all_moods.extend(doc_data['labels'])
+        total_requests += 1
+
     mood_counter = Counter(all_moods)
 
     if mood_counter:
